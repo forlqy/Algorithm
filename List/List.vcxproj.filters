@@ -21,5 +21,62 @@
     <ClInclude Include="list.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="listnode_insertaspred.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="listnode_implementation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="listnode_insertassucc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_bracket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_implementation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_clear.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_constructor_by_copying.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_copynodes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_initialize.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_deduplicate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_destructor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_find.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_insert.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_insertionsort.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_merge.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_mergesort.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_remove.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_reverse3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="list_search.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

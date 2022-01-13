@@ -21,6 +21,25 @@
   <ItemGroup>
     <ClInclude Include="list.h" />
     <ClInclude Include="listNode.h" />
+    <ClInclude Include="listnode_implementation.h" />
+    <ClInclude Include="listnode_insertaspred.h" />
+    <ClInclude Include="listnode_insertassucc.h" />
+    <ClInclude Include="list_bracket.h" />
+    <ClInclude Include="list_clear.h" />
+    <ClInclude Include="list_constructor_by_copying.h" />
+    <ClInclude Include="list_copynodes.h" />
+    <ClInclude Include="list_deduplicate.h" />
+    <ClInclude Include="list_destructor.h" />
+    <ClInclude Include="list_find.h" />
+    <ClInclude Include="list_implementation.h" />
+    <ClInclude Include="list_initialize.h" />
+    <ClInclude Include="list_insert.h" />
+    <ClInclude Include="list_insertionsort.h" />
+    <ClInclude Include="list_merge.h" />
+    <ClInclude Include="list_mergesort.h" />
+    <ClInclude Include="list_remove.h" />
+    <ClInclude Include="list_reverse3.h" />
+    <ClInclude Include="list_search.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -33,26 +52,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>

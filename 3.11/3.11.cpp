@@ -27,10 +27,14 @@ public:
 	bool add(Object x) {
 		if (contains(x))
 			return false;
-		else{
-			Node<Object>* ptr = new Node<Object>(x);
-			ptr->next = head->next;
-			head->next = ptr;
+		else{                                       //保持单向链表总是处于排序状态，则改进为
+			Node<Object>* ptr = new Node<Object>(x);//Node<Object>* ptr = head->next;
+			ptr->next = head->next;                 //Node<Object>* trailer = head;
+			head->next = ptr;                       /*while (ptr && ptr->data < x){
+													  trailer->next = new Node<Object> (x);
+													  trailrt->next->next = ptr;
+													  theSize++;
+													  }*/
 			theSize++;
 		}
 		return true;
@@ -66,7 +70,7 @@ public:
 
 	bool contains(const Object& x) {
 		Node<Object>* ptr = head->next;
-		while (ptr != NULL) {
+		while (ptr != NULL) {//改为：while (ptr != NULL && ptr->data <= x)
 			if (x == ptr->data)
 				return true;
 			else

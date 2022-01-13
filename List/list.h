@@ -1,11 +1,12 @@
 #pragma once
 #include "listNode.h"
+//#include "list_implementation.h"
 
 template <typename T>class List {//列表模板类
 private:
 	int _size;//规模
-	ListNodePosi<T>header;//头哨兵
-	ListNodePosi<T>trailer;//尾哨兵
+	ListNodePosi<T> header;//头哨兵
+	ListNodePosi<T> trailer;//尾哨兵
 protected:
 	void init();//列表创建时的初始化
 	int clear();//清除所有节点

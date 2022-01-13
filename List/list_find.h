@@ -1,0 +1,7 @@
+#pragma once
+template <typename T>//在无序列表内节点p（可能为trailer）的n个（真）前驱中，找到等于e的最后者
+ListNodePosi<T> List<T>::find(T const& e, int n, ListNodePosi<T> p)const {
+	while (0 < n--)//(0 <= n <=rank(p) < _size)对于p的最近的n个前驱，从右向左
+		if (e == (p = p->pred)->data) return p;//逐个比对，直至命中或范围越界
+	return NULL;//p越出左边界意味区间不含e，查找失败
+}//返回NULL

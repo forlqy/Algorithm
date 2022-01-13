@@ -104,3 +104,4 @@ Rank Vector<T>::insert(Rank r, T const& e) { //assert: 0 <= r <= size
 	_elem[r] = e; _size++; //置入新元素并更新容量
 	return r; //返回秩
 }
+
