@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 using Rank = int; //秩
 #define DEFAULT_CAPACITY  3 //默认的初始容量（实际应用中可设置为更大）

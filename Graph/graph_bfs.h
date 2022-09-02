@@ -1,5 +1,5 @@
 #pragma once
-#include "C:/vscode/Algorithm/Queue/queue.h"
+#include "queue.h"
 #include "graph.h"
 template <typename Tv, typename Te>//BFS�㷨(ȫͼ)
 void Graph<Tv, Te>::bfs(int s) {//assert: 0 <= s < n

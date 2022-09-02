@@ -1,3 +1,5 @@
+#include <iostream>
+#include "BinNode_macro.h"
 #if defined(DSA_REDBLACK)
 #define stature(p)((p) ? (p)->height : 0)//红黑树节点的黑高度（NULL视作为外部节点，对应于0）
 #else
