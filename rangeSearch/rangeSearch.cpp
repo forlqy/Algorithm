@@ -52,7 +52,7 @@ int main() {
 	   int a, b;
 	    for (int i = 0; i < n; i++) {
 		       scanf("%d%d", &a, &b);
-		         int resA = binSearch(a - 1, 0, m);//小于a的最后一个位置
+		        int resA = binSearch(a - 1, 0, m);//小于a的最后一个位置
 		        int resB = binSearch(b, 0, m);//b的最后位置
 		       printf("%d \n", resB - resA);
 		

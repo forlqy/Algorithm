@@ -1,7 +1,7 @@
 #pragma once
 #include "listNode.h"
 //#include "list_implementation.h"
-
+using Rank = int;
 template <typename T>class List {//列表模板类
 private:
 	int _size;//规模

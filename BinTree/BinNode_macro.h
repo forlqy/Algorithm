@@ -13,7 +13,7 @@
 #define sibling(p) (IsLChild(*(p))) ? (p)->parent->rc : (p)->parent->lc/*兄弟*/
 #define uncle(x) (slbling((x)->parent))/*叔叔*/
 #define FromParentTo(x) /*来自父亲的引用*/\
-    (IsRoot(x) ? _root : (IsLChildx ? (x).parent->lc : (x).parent->rc))
+    (IsRoot(x) ? this->_root : (IsLChild(x) ? (x).parent->lc : (x).parent->rc))//更改加上this
 
 //Avl
 #define Balanced(x) (stature((x).lc) == stature((x).rc))//理想平衡条件

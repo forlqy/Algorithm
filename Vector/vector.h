@@ -1,101 +1,102 @@
 #pragma once
+#include <iostream>
+#include <assert.h>
+using Rank = int; //锟斤拷
+#define DEFAULT_CAPACITY  3 //默锟较的筹拷始锟斤拷锟斤拷锟斤拷实锟斤拷应锟斤拷锟叫匡拷锟斤拷锟斤拷为锟斤拷锟斤拷锟斤拷
 
-using Rank = int; //秩
-#define DEFAULT_CAPACITY  3 //默认的初始容量（实际应用中可设置为更大）
-
-template <typename T> class Vector { //向量模板类
+template <typename T> class Vector { //锟斤拷锟斤拷模锟斤拷锟斤拷
 protected:
-   Rank _size; int _capacity;  T* _elem; //规模、容量、数据区
-   void copyFrom ( T const* A, Rank lo, Rank hi ); //复制数组区间A[lo, hi)
-   //void expand(); //空间不足时扩容
-   //void shrink(); //装填因子过小时压缩
-  // bool bubble ( Rank lo, Rank hi ); //扫描交换
-  // void bubbleSort ( Rank lo, Rank hi ); //起泡排序算法
-   //Rank maxItem ( Rank lo, Rank hi ); //选取最大元素
-   //void selectionSort ( Rank lo, Rank hi ); //选择排序算法
-   // merge ( Rank lo, Rank mi, Rank hi ); //归并算法
-   //void mergeSort ( Rank lo, Rank hi ); //归并排序算法
-  // void heapSort ( Rank lo, Rank hi ); //堆排序（稍后结合完全堆讲解）
-   //Rank partition ( Rank lo, Rank hi ); //轴点构造算法
-   //void quickSort ( Rank lo, Rank hi ); //快速排序算法
-  // void shellSort ( Rank lo, Rank hi ); //希尔排序算法
+   Rank _size; int _capacity;  T* _elem; //锟斤拷模锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+   void copyFrom ( T const* A, Rank lo, Rank hi ); //锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷A[lo, hi)
+   void expand(); //锟秸间不锟斤拷时锟斤拷锟斤拷
+   void shrink(); //装锟斤拷锟斤拷锟接癸拷小时压锟斤拷
+   bool bubble ( Rank lo, Rank hi ); //扫锟借交锟斤拷
+   void bubbleSort ( Rank lo, Rank hi ); //锟斤拷锟斤拷锟斤拷锟斤拷锟姐法
+   Rank maxItem ( Rank lo, Rank hi ); //选取锟斤拷锟斤拷元锟斤拷
+   void selectionSort ( Rank lo, Rank hi ); //选锟斤拷锟斤拷锟斤拷锟姐法
+   void merge ( Rank lo, Rank mi, Rank hi ); //锟介并锟姐法
+   void mergeSort ( Rank lo, Rank hi ); //锟介并锟斤拷锟斤拷锟姐法
+   void heapSort ( Rank lo, Rank hi ); //锟斤拷锟斤拷锟斤拷锟斤拷锟皆猴拷锟斤拷锟斤拷锟斤拷全锟窖斤拷锟解）
+   Rank partition ( Rank lo, Rank hi ); //锟斤拷锟姐构锟斤拷锟姐法
+   void quickSort ( Rank lo, Rank hi ); //锟斤拷锟斤拷锟斤拷锟斤拷锟姐法
+   void shellSort ( Rank lo, Rank hi ); //希锟斤拷锟斤拷锟斤拷锟姐法
 public:
-// 构造函数
-   Vector ( int c = DEFAULT_CAPACITY, int s = 0, T v = 0 ) //容量为c、规模为s、所有元素初始为v
+// 锟斤拷锟届函锟斤拷
+   Vector ( int c = DEFAULT_CAPACITY, int s = 0, T v = 0 ) //锟斤拷锟斤拷为c锟斤拷锟斤拷模为s锟斤拷锟斤拷锟斤拷元锟截筹拷始为v
    { _elem = new T[_capacity = c]; for ( _size = 0; _size < s; _elem[_size++] = v ); } //s<=c
-   Vector ( T const* A, Rank n ) { copyFrom ( A, 0, n ); } //数组整体复制
-   Vector ( T const* A, Rank lo, Rank hi ) { copyFrom ( A, lo, hi ); } //区间
-   Vector ( Vector<T> const& V ) { copyFrom ( V._elem, 0, V._size ); } //向量整体复制
-   Vector ( Vector<T> const& V, Rank lo, Rank hi ) { copyFrom ( V._elem, lo, hi ); } //区间
-// 析构函数
-   ~Vector() { delete [] _elem; } //释放内部空间
-// 只读访问接口
-   Rank size() const { return _size; } //规模
-   bool empty() const { return !_size; } //判空
-   //Rank find ( T const& e ) const { return find ( e, 0, _size ); } //无序向量整体查找
-   //Rank find ( T const& e, Rank lo, Rank hi ) const; //无序向量区间查找
-   //Rank search ( T const& e ) const //有序向量整体查找
-   //{ return ( 0 >= _size ) ? -1 : search ( e, 0, _size ); }
-   //Rank search ( T const& e, Rank lo, Rank hi ) const; //有序向量区间查找
-// 可写访问接口
-   T& operator[] ( Rank r ); //重载下标操作符，可以类似于数组形式引用各元素
-   const T& operator[] ( Rank r ) const; //仅限于做右值的重载版本
-   Vector<T> & operator= ( Vector<T> const& ); //重载赋值操作符，以便直接克隆向量
-   T remove ( Rank r ); //删除秩为r的元素
-   int remove ( Rank lo, Rank hi ); //删除秩在区间[lo, hi)之内的元素
-   Rank insert ( Rank r, T const& e ); //插入元素
-   Rank insert ( T const& e ) { return insert ( _size, e ); } //默认作为末元素插入
-   //void sort ( Rank lo, Rank hi ); //对[lo, hi)排序
-   //void sort() { sort ( 0, _size ); } //整体排序
-  // void unsort ( Rank lo, Rank hi ); //对[lo, hi)置乱
-  // void unsort() { unsort ( 0, _size ); } //整体置乱
-   //int deduplicate(); //无序去重
-   //int uniquify(); //有序去重
-// 遍历
-  // void traverse ( void (* ) ( T& ) ); //遍历（使用函数指针，只读或局部性修改）
-  // template <typename VST> void traverse ( VST& ); //遍历（使用函数对象，可全局性修改）
+   Vector ( T const* A, Rank n ) { copyFrom ( A, 0, n ); } //锟斤拷锟斤拷锟斤拷锟藉复锟斤拷
+   Vector ( T const* A, Rank lo, Rank hi ) { copyFrom ( A, lo, hi ); } //锟斤拷锟斤拷
+   Vector ( Vector<T> const& V ) { copyFrom ( V._elem, 0, V._size ); } //锟斤拷锟斤拷锟斤拷锟藉复锟斤拷
+   Vector ( Vector<T> const& V, Rank lo, Rank hi ) { copyFrom ( V._elem, lo, hi ); } //锟斤拷锟斤拷
+// 锟斤拷锟斤拷锟斤拷锟斤拷
+   ~Vector() { delete [] _elem; } //锟酵凤拷锟节诧拷锟秸硷拷
+// 只锟斤拷锟斤拷锟绞接匡拷
+   Rank size() const { return _size; } //锟斤拷模
+   bool empty() const { return !_size; } //锟叫匡拷
+   Rank find ( T const& e ) const { return find ( e, 0, _size ); } //锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+   Rank find ( T const& e, Rank lo, Rank hi ) const; //锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+   Rank search ( T const& e ) const //锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+   { return ( 0 >= _size ) ? -1 : search ( e, 0, _size ); }
+   Rank search ( T const& e, Rank lo, Rank hi ) const; //锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+// 锟斤拷写锟斤拷锟绞接匡拷
+   T& operator[] ( Rank r ); //锟斤拷锟斤拷锟铰憋拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷式锟斤拷锟矫革拷元锟斤拷
+   const T& operator[] ( Rank r ) const; //锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷值锟斤拷锟斤拷锟截版本
+   Vector<T> & operator= ( Vector<T> const& ); //锟斤拷锟截革拷值锟斤拷锟斤拷锟斤拷锟斤拷锟皆憋拷直锟接匡拷隆锟斤拷锟斤拷
+   T remove ( Rank r ); //删锟斤拷锟斤拷为r锟斤拷元锟斤拷
+   int remove ( Rank lo, Rank hi ); //删锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷[lo, hi)之锟节碉拷元锟斤拷
+   Rank insert ( Rank r, T const& e ); //锟斤拷锟斤拷元锟斤拷
+   Rank insert ( T const& e ) { return insert ( _size, e ); } //默锟斤拷锟斤拷为末元锟截诧拷锟斤拷
+   void sort ( Rank lo, Rank hi ); //锟斤拷[lo, hi)锟斤拷锟斤拷
+   void sort() { sort ( 0, _size ); } //锟斤拷锟斤拷锟斤拷锟斤拷
+   void unsort ( Rank lo, Rank hi ); //锟斤拷[lo, hi)锟斤拷锟斤拷
+   void unsort() { unsort ( 0, _size ); } //锟斤拷锟斤拷锟斤拷锟斤拷
+   int deduplicate(); //锟斤拷锟斤拷去锟斤拷
+   int uniquify(); //锟斤拷锟斤拷去锟斤拷
+// 锟斤拷锟斤拷
+   void traverse ( void (* ) ( T& ) ); //锟斤拷锟斤拷锟斤拷使锟矫猴拷锟斤拷指锟诫，只锟斤拷锟斤拷锟街诧拷锟斤拷锟睫改ｏ拷
+   template <typename VST> void traverse ( VST& ); //锟斤拷锟斤拷锟斤拷使锟矫猴拷锟斤拷锟斤拷锟襟，匡拷全锟斤拷锟斤拷锟睫改ｏ拷
 }; //Vector
 
 
 template <typename T>
-Vector<T>& Vector<T>::operator= (Vector<T> const& V) {//深拷贝
-	if (_elem) delete[] _elem;//释放原有内容
-	copyFrom(V._elem, 0, V._size);//整体拷贝
-	return *this;//返回当前对象的引用，以便链式赋值
+Vector<T>& Vector<T>::operator= (Vector<T> const& V) {//锟筋拷锟斤拷
+	if (_elem) delete[] _elem;//锟酵凤拷原锟斤拷锟斤拷锟斤拷
+	copyFrom(V._elem, 0, V._size);//锟斤拷锟藉拷锟斤拷
+	return *this;//锟斤拷锟截碉拷前锟斤拷锟斤拷锟斤拷锟斤拷锟矫ｏ拷锟皆憋拷锟斤拷式锟斤拷值
 }
 
 template <typename T>
-T& Vector<T>::operator[] (Rank r) { //重载下标操作符
-	//assert(r >= 0 && r < _size);
+T& Vector<T>::operator[] (Rank r) { //锟斤拷锟斤拷锟铰憋拷锟斤拷锟斤拷锟斤拷
+	assert(r >= 0 && r < _size);
 	return _elem[r];
 }
 
 template <typename T>
 const T& Vector<T>::operator[] (Rank r)const {
-	//assert(r >= 0 && r < _size);
+	assert(r >= 0 && r < _size);
 	return _elem[r];
 }
 
 template <typename T>
-void Vector<T>::copyFrom(const T* A, Rank lo, Rank hi) {//以数组区间[lo, hi)为蓝本复制
-	_elem = new T[_capacity = 2 * (hi - lo)];//分配空间
+void Vector<T>::copyFrom(const T* A, Rank lo, Rank hi) {//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷[lo, hi)为锟斤拷锟斤拷锟斤拷锟斤拷
+	_elem = new T[_capacity = 2 * (hi - lo)];//锟斤拷锟斤拷锟秸硷拷
 	for (_size = 0; lo < hi; _size++, lo++) {
-		_elem[_size] = A[lo];//const修饰，保证原数组不会被篡改
+		_elem[_size] = A[lo];//const锟斤拷锟轿ｏ拷锟斤拷证原锟斤拷锟介不锟结被锟桔革拷
 	}//O(hi - lo)
 }
 
 template <typename T>
-T Vector<T>::remove(Rank r) { //删除向量中秩为r的元素，0 <= r < size
-	T e = _elem[r]; //备份被删除元素
-	remove(r, r + 1); //调用区间删除算法，等效于对区间[r, r + 1)的删除
-	return e; //返回被删除元素
+T Vector<T>::remove(Rank r) { //删锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷为r锟斤拷元锟截ｏ拷0 <= r < size
+	T e = _elem[r]; //锟斤拷锟捷憋拷删锟斤拷元锟斤拷
+	remove(r, r + 1); //锟斤拷锟斤拷锟斤拷锟斤拷删锟斤拷锟姐法锟斤拷锟斤拷效锟节讹拷锟斤拷锟斤拷[r, r + 1)锟斤拷删锟斤拷
+	return e; //锟斤拷锟截憋拷删锟斤拷元锟斤拷
 }
 
-template <typename T> int Vector<T>::remove(Rank lo, Rank hi) { //删除区间[lo, hi)
-	if (lo == hi) return 0; //出于效率考虑，单独处理退化情况，比如remove(0, 0)
-	while (hi < _size) //区间[hi, _size)
-		_elem[lo++] = _elem[hi++]; //顺次前移hi - lo个单元
-	_size = lo; //更新规模，直接丢弃尾部[lo, _size = hi)区间
-	shrink(); //若有必要，则缩容
-	return hi - lo; //返回被删除元素的数目
+template <typename T> int Vector<T>::remove(Rank lo, Rank hi) { //删锟斤拷锟斤拷锟斤拷[lo, hi)
+	if (lo == hi) return 0; //锟斤拷锟斤拷效锟绞匡拷锟角ｏ拷锟斤拷锟斤拷锟斤拷锟斤拷锟剿伙拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷remove(0, 0)
+	while (hi < _size) //锟斤拷锟斤拷[hi, _size)
+		_elem[lo++] = _elem[hi++]; //顺锟斤拷前锟斤拷hi - lo锟斤拷锟斤拷元
+	_size = lo; //锟斤拷锟铰癸拷模锟斤拷直锟接讹拷锟斤拷尾锟斤拷[lo, _size = hi)锟斤拷锟斤拷
+	shrink(); //锟斤拷锟叫憋拷要锟斤拷锟斤拷锟斤拷锟斤拷
+	return hi - lo; //锟斤拷锟截憋拷删锟斤拷元锟截碉拷锟斤拷目
 }

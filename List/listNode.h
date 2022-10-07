@@ -1,6 +1,6 @@
 #pragma once
 //#define Posi(T) ListNode<T>*   //列表节点位置（ISO C++.0x, template alias）
-#include "listnode_implementation.h"
+//#include "listnode_implementation.h"
 using Rank = int;
 template <typename T> struct ListNode;
 template <typename T> using ListNodePosi = ListNode<T>*;//列表结点位置
@@ -11,7 +11,7 @@ struct ListNode {//列表节点模板类（以双向链表形式实现）
 	ListNodePosi<T> succ;//后继
 //构造函数
 	ListNode() {}//针对header和trailer的构造
-	ListNode(T e, ListNodePosi<T> p = NULL, ListNodePosi<T> s = NULL) : data(e), pred(p), succ(s){}//默认构造器
+	ListNode(T e, ListNodePosi<T> p = nullptr, ListNodePosi<T> s = nullptr) : data(e), pred(p), succ(s){}//默认构造器
 //操作接口
 	ListNodePosi<T> insertAsPred(T const& e);//前插入
 	ListNodePosi<T> insertAsSucc(T const& e);//后插入

@@ -1,6 +1,6 @@
 #include "BinNode.h"
 template <typename T>
-BinNodePosi<T> BinNode<T>::zig(){//Ë³Ê±ÕëÐý×ª
+BinNodePosi<T> BinNode<T>::zig(){//Ë³Ê±ï¿½ï¿½ï¿½ï¿½×ª
     BinNodePosi<T> lChild = lc;
     lChild->parent = this->parent;
     if (lChild->parent)
